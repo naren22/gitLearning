@@ -1,0 +1,98 @@
+.cmp-search-property,
+.cmp-search-date-range {
+    padding: 0.5rem 1rem;
+
+    .ui.accordion {
+        border-bottom: 1px solid #000000;
+
+        .title.filter-title {
+            padding: 1rem 1.75rem 1rem 0;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.71;
+            letter-spacing: 1.5px;
+            color: #000000;
+            text-transform: uppercase;
+
+            &::after {
+                top: 17px;
+            }
+        }
+
+        .content {
+            padding: 0.5em 0 1.5rem;
+
+            .field {
+                margin: 0;
+                padding: 0.5rem 0;
+
+                .ui.checkbox {
+                    label {
+                        font-family: 'MetaOT';
+                        font-size: 14px;
+                        font-weight: 300;
+                        letter-spacing: 0.84px;
+                        color: #000000;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .custom-field-checkbox {
+                .ui.checkbox input[type="checkbox"] {
+                    left: -22px;
+                    top: 0;
+                }
+
+                .ui.checkbox input:checked~.box:after,
+                .ui.checkbox input:checked~label:after {
+                    content: '\e800';
+                    background-color: transparent;
+                }
+
+                .ui.checkbox label {
+                    padding: 0;
+                    &::before {
+                        left: -22px;
+                        top: 6px;
+                        border: 0;
+                        border-radius: 0;
+                        background-color: transparent;
+                    }
+
+                    &::after {
+                        border-radius: 0;
+                        transform: none;
+                        background-color: transparent;
+                        left: -22px;
+                        top: 0;
+                    }
+                }
+            }
+            .ui.toggle.checkbox input:checked ~ .box, 
+            .ui.toggle.checkbox input:checked ~ label {
+                color: #000000 !important;
+            }
+            .custom-field-radio {
+                .ui.checkbox input[type="radio"] {
+                    left: -21px;
+                    top: 1px;
+                }
+                .ui.radio.checkbox {
+                    label {
+                        padding: 0;
+                        &::before {
+                            top: 2px;
+                            left: -20px;
+                            background: transparent !important;
+                            border: 0;
+                        }
+                        &::after {
+                            top: 2px;
+                            left: -20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

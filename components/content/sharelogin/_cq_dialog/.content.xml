@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Share Login"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    maximized="{Boolean}true">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <tab-1
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Form Fields"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <file
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fieldLabel="Image asset"
+                                        fileNameParameter="./fileName"
+                                        fileReferenceParameter="./fileReference"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                                        multiple="{Boolean}false"
+                                        name="./file"
+                                        title="Upload Image Asset"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"/>
+                                    <alt
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="Textual alternative of the meaning or function of the image, for visually impaired readers."
+                                        fieldLabel="Alternative Text"
+                                        name="./alt"
+                                        required="{Boolean}true"
+                                        wrapperClass="cmp-image--editor-alt"/>
+                                    <modal-title
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="View Shared Asset"
+                                        fieldLabel="Title"
+                                        name="./title"/>
+                                    <passwordPromptLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Enter The Password"
+                                        fieldLabel="Password Prompt Label"
+                                        name="./passwordPromptLabel"/>
+                                    <passwordPromptMessage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        emptyText="This link is password protected. Enter the password to view shared asset"
+                                        fieldLabel="Password Prompt Message"
+                                        name="./passwordPromptMessage"/>
+                                    <passwordLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="Password"
+                                        fieldLabel="Password Label"
+                                        name="./passwordLabel"/>
+                                    <buttonLabel
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        emptyText="View Asset"
+                                        fieldLabel="Button Label"
+                                        name="./buttonLabel"/>
+                                </items>
+                            </column>
+                        </items>
+                    </tab-1>
+                    <tab-2
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Error Messages"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <keyMessage
+                                    	jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        emptyText="Share Url is invalid."
+                                        defaultValue="Share Url is invalid."
+                                        fieldLabel="Error Message for the invalid share urls or share keys."
+                                        name="./keyMessage"/>
+                                    <expiredMessage
+                                    	jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        emptyText="Share Url is expired."
+                                        defaultValue="Share Url is expired."
+                                        fieldLabel="Error Message for the expired urls."
+                                        name="./expiredMessage"/>
+                                    <anfMessage
+                                    	jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        emptyText="Shared asset is not found in the Gore Marketing Portal Asset Library."
+                                        defaultValue="Shared asset is not found in the Gore Marketing Portal Asset Library."
+                                        fieldLabel="Error Message for the assets not found in DAM."
+                                        name="./anfMessage"/>
+                                    <pwErrorMessage
+                                    	jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        emptyText="The password entered is wrong."
+                                        defaultValue="The password entered is wrong."
+                                        fieldLabel="Error Message for wrong passwords."
+                                        name="./pwErrorMessage"/>
+                                    <errorMessage
+                                    	jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                        emptyText="An unknown error occurred while locating the shared asset in the Gore Marketing Portal Asset Library."
+                                        defaultValue="An unknown error occurred while locating the shared asset in the Gore Marketing Portal Asset Library."
+                                        fieldLabel="Error Message for Others."
+                                        name="./errorMessage"/>
+                               </items>
+                          	</column>
+                     	</items>
+                    </tab-2>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,43 @@
+
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	 data-sly-use.download="com.adobe.aem.commons.assetshare.components.actions.download.Download"
+     data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"
+     data-sly-use.customConfig="gore.core.assetshare.configuration.impl.CustomConfigImpl"
+     data-sly-test.asset="${modelCache['com.adobe.aem.commons.assetshare.content.AssetModel']}"
+     data-sly-use.actionButtons="com.adobe.aem.commons.assetshare.components.details.ActionButtons"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.ready="${actionButtons.ready}">
+
+    <div class="ui basic segment">
+		<div class="actions cmp-action-buttons">
+			<form method="post"
+	      		action="/content/dam.assetdownload.zip/${download.zipFileName}.zip"
+			  	id="action-button-form">
+	      		<!--/*target="download"*/-->
+	      		<input type="hidden" name="licenseCheck" value="true"/>
+    			<input type="hidden" name="flatStructure" value="false"/>
+    			<input type="hidden" name="downloadAssets" value="true"/>
+    			<input type="hidden" name="downloadRenditions" value="${properties['includeRenditions']}">
+	            <!--/*<sly data-sly-list.asset="${download.assets}">
+	         		<input type="hidden" name="path"  value="${asset.url}"/>
+	     		</sly> */-->
+	     		<input type="hidden" name="path" value="${asset.path}"/>
+	            <button id="action-button-dl"
+						class="ui secondary button cmp-action-buttons__button"
+	                    data-asset-share-asset="${asset.path}" type="submit"
+	                    data-asset-share-license="${config.licenseEnabled ? asset.properties['license'] : ''}"
+	                    data-sly-test="${properties['downloadLabel'] && config.downloadEnabled}">
+	                ${properties['downloadLabel'].toString.toUpperCase || "DOWNLOAD" @ i18n}
+	            </button>
+	        </form>
+            <button class="ui button cmp-action-buttons__button button-link button-share"
+                    data-asset-share-id="share-asset"
+                    data-asset-share-asset="${asset.path}"
+                    data-sly-test="${properties['shareLabel'] && config.shareEnabled}">
+                ${properties['shareLabel'].toString.toUpperCase || "Share Asset" @ i18n}
+            </button>
+        </div>	
+    </div>
+
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

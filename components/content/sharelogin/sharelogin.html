@@ -1,0 +1,56 @@
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	 data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"
+	 data-sly-use.share="com.gore.marketing.core.components.actions.share.ShareLogin"></sly>
+
+<div class="sharelogin-wrapper">
+	<div class="sharelogin-bkg-img" style="background-image:url('${properties.fileReference @context='unsafe'}');"></div>
+	<div class="sharelogin-info-box">
+		<div class="sharelogin-header">
+			<h2>${properties['title'] || 'VIEW SHARED ASSET' @ i18n}</h2>
+		</div>
+		<div class="sharelogin-body">
+			<sly data-sly-test="${wcmmode.edit || ((share.sharekey || request.requestParameterMap['sharekey'][0].toString) && !share.keyError && !share.expired && !share.notFound)}">
+				<div class="sharelogin-subheader">
+					<h2>${properties['passwordPromptLabel'] || 'ENTER THE PASSWORD' @ i18n}</h2>
+				</div>
+				<div class="propmt-msg">
+					${properties['passwordPromptMessage'] || 'This link is password protected. Enter the password to view shared asset.' @ i18n}
+				</div>
+				<form action="/bin/gore/viewsharedasset.html"
+					data-asset-share-id="share-login"
+					class="ui form no-border">
+					<div class="form-group">
+						<label class="hidden">${properties['passwordLabel'] || 'Password' @ i18n}</label>
+						<input type="password" name="password" placeholder="${properties['passwordLabel'] || 'Password' @ i18n}">
+						<div class="toggle-password">
+			           		<i class="gore-icon gore-icon-eye"></i>
+			           		<i class="gore-icon gore-icon-eyecross"></i>
+			           	</div>
+		                <div class="input-info input-error" data-sly-test="${wcmmode.disabled && share.pwdError == 'true'}">
+		                    ${properties['pwErrorMessage'] || 'The password entered is wrong.' @ i18n}
+		                </div>
+	            	</div>
+					<input type="hidden" name="sharekey" value="${request.requestParameterMap['sharekey'][0].toString || share.sharekey}">
+					<input type="hidden" name="lang" value="${share.lang}"/>
+					<button type="submit" class="view-asset ui secondary button">
+						${properties['buttonLabel'] || 'View Asset' @ i18n}
+					</button>
+				</form>
+			</sly>
+			<div class="error-msg">
+				<p data-sly-test="${wcmmode.disabled && (!share.sharekey || !request.requestParameterMap['sharekey'][0].toString || share.keyError)}">
+					${properties['keyMessage'] || 'Share Url is invalid.' @ i18n}
+				</p>
+				<p data-sly-test="${wcmmode.disabled && share.expired}">
+					${properties['expiredMessage'] || 'Share Url is expired.' @ i18n}
+				</p>
+				<p data-sly-test="${wcmmode.disabled && share.notFound}">
+					${properties['anfMessage'] || 'Shared asset is not found in the Gore Marketing Portal Asset Library.' @ i18n}
+				</p>
+				<p data-sly-test="${wcmmode.disabled && share.error}">
+					${properties['errorMessage'] || 'An unknown error occurred while locating the shared asset in the Gore Marketing Portal Asset Library.' @ i18n}
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

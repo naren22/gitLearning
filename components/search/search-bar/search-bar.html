@@ -1,0 +1,33 @@
+<sly data-sly-use.predicate="com.adobe.aem.commons.assetshare.components.predicates.FulltextPredicate"
+	 data-sly-use.searchBar="gore.core.assetshare.components.gmc.SearchBar"
+	 data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+	 data-sly-test.ready="${predicate.isReady}">
+
+	<div class="ui fluid big left icon input searchbar-wrapper ${properties['hideButton'] ? '' : 'action'}">
+		<input type="${predicate.type}"
+			   placeholder="${properties['placeholder']}"
+			   name="${predicate.name}"
+			   id="${predicate.id}"
+			   value="${predicate.initialValue}"
+			   form="${predicate.formId}"
+			   autocomplete="off" />
+		<i class="gore-icon gore-icon-search icon"></i>
+		<div id="searchTypeDropdown" class="ui dropdown gore-dropdown">
+			<div class="text">${properties.selectText}</div>
+			<div class="menu transition hidden">
+				<div class="item active selected">${properties.selectText}</div>
+				<sly data-sly-list.type="${searchBar.types}">
+					<div class="item" data-value="${type.value}">${type.label}</div>
+				</sly>
+			</div>
+		</div>
+	</div>
+	<div class="search-keywords" data-sly-test="${searchBar.keywords}">
+		<div class="keywords-label">${properties.keywordTitle || 'Popular' @ i18n}:</div>
+		<ul data-sly-list.keyword="${searchBar.keywords}">
+			<li id="${keyword.value}" class="search-keyword-label">${keyword.label}</li>
+		</ul>
+	</div>
+
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty= !ready}"></sly>

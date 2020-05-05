@@ -1,0 +1,87 @@
+.cmp-search-statistics {
+    position: relative;
+    padding: 0 0.75rem;
+    .show-filterbar {
+        position: absolute;
+        display: none;
+        cursor: pointer;
+        left: 1rem;
+        z-index: 999;
+        &.show {
+            display: block;    
+        }
+        .filters-qtty {
+            position: relative;
+            width: 50px;
+            line-height: 32px;
+            text-align: center;
+            z-index: 3;
+            font-size: 14px;
+            letter-spacing: 0.56px;
+        }
+    }
+    &.filters-inactive {
+        .filters-qtty {
+            visibility: hidden;
+        }
+    }
+    .statistics-text {
+        position: relative;
+        display: inline-block;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 1.6;
+        letter-spacing: 0.44px;
+        .results-qtty {
+            font-weight: 500;
+        }
+        .results-label {
+            .keyword {
+                font-weight: 500;
+            }
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        padding: 0;
+        .show-filterbar {
+            left: auto;
+            right: 0.25rem;
+            &.filters-inactive {
+                .filters-qtty {
+                    margin-right: 0;
+                }
+            }
+            &.gore-icon.gore-toggle-filter::after {
+                left: auto;
+                right: 0;
+            }
+            &.fixed {
+                position: fixed;
+                bottom: 4rem;
+                right: 1rem;
+            }
+        }
+        .filters-qtty {
+            margin-right: 35px;
+        }
+    }
+}
+
+.filterbar-closed {
+    .cmp-search-statistics { 
+        .statistics-text {
+            padding-left: 110px;
+        }
+        &.filters-inactive {
+            .statistics-text {
+                padding-left: 80px;
+            }
+        }
+        @media only screen and (max-width: 767px) {
+            .statistics-text {
+                padding-left: 0!important;
+                padding-right: 100px;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	 data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"></sly>
+<div class="banner_gm img-align-${properties['imgAlign']}">
+	<div class="banner-img-section">
+		<img src="${properties['fileReference']}">
+	</div>
+	<div class="banner-content-section">
+		<div class="banner-content-wrapper ui form no-border"
+			 data-sly-resource="${'content-grid' @ resourceType='wcm/foundation/components/responsivegrid'}"></div>
+	</div>
+</div>

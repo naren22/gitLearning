@@ -1,0 +1,135 @@
+/*
+ * Asset Share Commons
+ *
+ * Copyright [2017]  Adobe
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Note the !important's are required dude to conflicts via SemanticUI styles
+
+// Initial state
+.cmp-modal-share__wrapper--initial {
+	.cmp-content--loading,
+	.cmp-content--success,
+	.cmp-content--error,
+	.cmp-footer__actions--completed {
+		display: none !important;
+	}
+
+	.cmp-content--form,
+	.cmp-footer__actions {
+		display: block !important;
+	}
+}
+
+// Loading
+.cmp-modal-share__wrapper--loading {
+	.cmp-content--form,
+	.cmp-content--success,
+	.cmp-content--error,
+	.cmp-footer__actions--completed {
+		display: none !important;
+	}
+
+	.cmp-content--loading {
+		opacity: 1 !important;
+		display: block !important;
+	}
+}
+
+// Share successful
+.cmp-modal-share__wrapper--success {
+	.cmp-content--form,
+	.cmp-content--loading,
+	.cmp-content--error,
+	.cmp-footer__actions {
+		display: none !important;
+	}
+
+	.cmp-content--success,
+	.cmp-footer__actions--completed {
+		display: block !important;
+	}
+}
+
+// Share error'd
+.cmp-modal-share__wrapper--error {
+	.cmp-content--form,
+	.cmp-content--loading,
+	.cmp-content--success,
+	.cmp-footer__actions {
+		display: none !important;
+	}
+
+	.cmp-content--error,
+	.cmp-footer__actions--completed {
+		display: block !important;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.assetshare-modal.ui.modal {
+		max-width: 440px;
+		margin-left: -210px;
+	}
+}
+@media only screen and (max-width: 767px) {
+	.assetshare-modal.ui.modal {
+		width: 90%;
+		margin: 0 0 0 -45%;
+	}
+}
+
+.assetshare-modal {
+	&.ui.modal {
+		border-radius: 0;
+		.actions {
+			background: transparent;
+			border: 0;
+			padding: 1rem 0;
+			& > .button {
+				margin: 0;
+			}
+		}
+	}
+	.share-modal-body {
+		display: block;
+		padding: 2rem 1.5rem;
+		background-color: #f6f6f6;
+	}
+	.share-modal-subtitle {
+		text-align: center;
+		font-family: 'MetaOT';
+		line-height: 1.63;
+		letter-spacing: 1px;
+		margin-bottom: 2rem;
+	}
+	.share-header {
+		display: block;
+		background-color: #FFF;
+		padding: 1.5rem 1.25rem;
+
+		h2 {
+			font-family: 'GOREFabrics';
+			text-align: center;
+			text-transform: uppercase;
+			letter-spacing: 2.4px;
+			margin: 0;
+		}
+	}
+	.share-modal-submit {
+		margin-top: 2rem;
+	}
+	.ui.modal .actions > .button
+}

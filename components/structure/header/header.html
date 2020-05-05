@@ -1,0 +1,55 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+	 data-sly-use.header="com.gore.marketing.core.models.Header"
+	 data-sly-test.ready="${header.ready}">
+<header>
+	<div>
+        <a class="gore-marketing-logo" href="${header.link}" target="${header.openInNewWindow ? '_blank' : ''}"> 
+            <img data-sly-test="${header.logo}" src="${header.logo}" alt="${header.altText}">
+        </a>
+        <div class="toggle-nav">
+            <div class="burguer-btn"><i class="gore-icon gore-icon-burguer"></i></div>
+            <i class="gore-icon gore-icon-close"></i>
+        </div>
+        <ul class="gore-marketing-navigation ${(wcmmode.disabled || wcmmode.preview) && !header.loggedInUser ? 'hidden': ''}" 
+            data-sly-list.menu="${header.userNavItems}">
+            <li class="gore-marketing-menu ${menu.cssClass} ${menu.hasSubMenus? 'has-submenu ui accordion': ''}">
+                <a class="menu-link" href="${menu.link}" target="${menu.openInNewWindow ? '_blank' : ''}">
+                    ${menu.label}
+                </a>
+                <div data-sly-test="${menu.hasSubMenus}" class="drop-toggle title">
+                    <i class="gore-icon gore-icon-arrow-down"></i>
+                    <i class="gore-icon gore-icon-arrow-up"></i>
+                </div>
+                <ul data-sly-test="${menu.hasSubMenus}" data-sly-list.submenu="${menu.children}" class="gore-marketing-submenu content">
+                    <li>
+                        <a class="submenu-link" data-sly-test="${submenu.link}" 
+                            href="${submenu.link}" target="${submenu.openInNewWindow ? '_blank' : ''}">
+                            ${submenu.label}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="gore-marketing-navigation ${(wcmmode.disabled || wcmmode.preview) && header.loggedInUser ? 'hidden':''}"
+            data-sly-list.menu="${header.defaultNavItems}">
+            <li class="gore-marketing-menu ${menu.cssClass} ${menu.hasSubMenus? 'has-submenu ui accordion': ''}">
+                <a class="menu-link" href="${menu.link? menu.link : ''}" target="${menu.openInNewWindow ? '_blank' : ''}">
+                    ${menu.label}
+                </a>
+                <div data-sly-test="${menu.hasSubMenus}" class="drop-toggle title">
+                    <i class="gore-icon gore-icon-arrow-down"></i>
+                    <i class="gore-icon gore-icon-arrow-up"></i>
+                </div>
+                <ul data-sly-test="${menu.hasSubMenus}" data-sly-list.submenu="${menu.children}" class="gore-marketing-submenu content">
+                    <li>
+                        <a class="submenu-link" data-sly-test="${submenu.link}" 
+                            href="${submenu.link}" target="${submenu.openInNewWindow ? '_blank' : ''}">
+                            ${submenu.label}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

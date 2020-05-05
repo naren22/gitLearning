@@ -1,0 +1,7 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+	 data-sly-use.helper="com.gore.marketing.core.models.Guidelines"
+	 data-sly-test.ready="${helper.ready}">
+<p data-sly-test="${wcmmode.edit || helper.guidelinePath}">
+	<sly data-sly-test="${wcmmode.edit || properties['preText']}">${properties['preText']} </sly><a href="${helper.guidelinePath}" target="_blank">${properties['anchorText'] || 'Guidelines' @ i18n}</a><sly data-sly-test="${wcmmode.edit || properties['subText']}">${properties['subText']}</sly>	
+</p>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

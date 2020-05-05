@@ -1,0 +1,5 @@
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	 data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"></sly>
+<form name="btn_form" method="get" action="${[properties['path'], '.html'] @ join = ''}">
+	<button class="ui button ${properties.color || 'primary'}" type="submit">${properties['btnLabel'] || 'BUTTON' @ i18n}</button>
+</form>

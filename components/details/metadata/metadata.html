@@ -1,0 +1,37 @@
+
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+     data-sly-test.asset="${modelCache['com.adobe.aem.commons.assetshare.content.AssetModel']}"
+     data-sly-use.field="com.adobe.aem.commons.assetshare.components.details.Metadata"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-use.fieldTypesTemplate="templates/field-types.html"
+     data-sly-test.ready="${field.ready}">
+
+    <div class="ui basic segment">
+        <div class="ui metadata-name"
+            data-sly-test="${!properties['hideLabel']}">${properties['label']} :</div>
+		<div class="details-metadata-value">
+	        <sly class="" data-sly-test.emptyValue="${field.empty}">
+	            ${properties['emptyText']}
+	        </sly>
+	
+	        <sly data-sly-test.emptyValue="${!field.empty}">
+	            <sly data-sly-test="${field.type.value == 'computed'}"
+	                 data-sly-call="${fieldTypesTemplate.computed @ field = field}"></sly>
+	
+	            <sly data-sly-test="${field.type.value == 'text'}"
+	                 data-sly-call="${fieldTypesTemplate.text @ field = field}"></sly>
+	
+	            <sly data-sly-test="${field.type.value == 'date'}"
+	                 data-sly-call="${fieldTypesTemplate.date @ field = field}"></sly>
+	
+	            <sly data-sly-test="${field.type.value == 'number'}"
+	                 data-sly-call="${fieldTypesTemplate.number @ field = field}"></sly>
+	
+	            <sly data-sly-test="${field.type.value == 'boolean'}"
+	                 data-sly-call="${fieldTypesTemplate.boolean @ field = field}"></sly>
+	        </sly>
+	    </div>
+    </div>
+
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

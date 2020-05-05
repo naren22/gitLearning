@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="CookieBanner"
+          sling:resourceType="cq/gui/components/authoring/dialog"
+          maximized="{Boolean}true">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <tab-1
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Logo,Title,Description"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <heroimage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            allowUpload="{Boolean}false"
+                                            autoStart="{Boolean}false"
+                                            class="cq-droptarget"
+                                            disabled="{Boolean}false"
+                                            fieldLabel="Hero Image"
+                                            fileNameParameter="./fileName"
+                                            fileReferenceParameter="./fileReference"
+                                            mimeTypes="[image/*]"
+                                            multiple="{Boolean}false"
+                                            name="./image"
+                                            useHTML5="{Boolean}false"/>
+                                    <Title
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="Title"
+                                            fieldLabel="Title"
+                                            name="./Title"
+                                            required="{Boolean}true"/>
+                                    <linkText1
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="Description"
+                                            fieldLabel="Description"
+                                            name="./Description"
+                                            required="{Boolean}true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </tab-1>
+                    <tab-2
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Buttons and Other Links"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <accept-button
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="Accept"
+                                            fieldLabel="Accept Button Label"
+                                            name="./AcceptButton"
+                                            required="{Boolean}true"/>
+                                    <linkUrl3
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            emptyText="Accept Link"
+                                            fieldLabel="Accept Link"
+                                            name="./AcceptLink"
+                                            required="{Boolean}true"/>
+                                    <linkText4
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="preferences"
+                                            fieldLabel="preferences"
+                                            name="./preferences"
+                                            required="{Boolean}true"/>
+                                    <linkUrl4
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            emptyText="preferences Link"
+                                            fieldLabel="preferences Link"
+                                            name="./preferencesLink"
+                                            required="{Boolean}true"/>
+                                    <linkText5
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="privacyNotice"
+                                            fieldLabel="privacyNotice"
+                                            name="./privacyNotice"
+                                            required="{Boolean}true"/>
+                                    <linkUrl5
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            emptyText="Link to privacyNotice"
+                                            fieldLabel="Link to privacyNotice"
+                                            name="./LinktoBlog"
+                                            required="{Boolean}true"/>
+                                    <linkText6
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            emptyText="Cookie Notice"
+                                            fieldLabel="Coookie Notice"
+                                            name="./cookienotice"
+                                            required="{Boolean}true"/>
+                                    <linkUrl6
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            emptyText="Link to cookienotice"
+                                            fieldLabel="Link to cookienotice"
+                                            name="./Linktocookienotice"
+                                            required="{Boolean}true"/>
+                                </items>
+                            </column>
+                        </items>
+                    </tab-2>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

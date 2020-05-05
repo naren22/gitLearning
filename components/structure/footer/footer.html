@@ -1,0 +1,53 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+	 data-sly-use.footer="com.gore.marketing.core.models.Footer"
+	 data-sly-test.ready="${footer.ready}">
+<footer class="footer">
+    <div class="footer__sections-wrapper">
+        <div class="footer__section first-section ui accordion">
+            <h4 class="footer__section-header title">
+                ${footer.websitesTitle}
+                <i class="gore-icon gore-icon-plus"></i>
+                <i class="gore-icon gore-icon-close"></i>
+            </h4>
+            <ul class="footer__items-wrapper content" data-sly-list.site="${footer.websites}">
+            	<li class="footer__item">
+            		<a href="${site.link}" target="${site.openInNewWindow ? '_blank' : ''}">
+                        ${site.label}
+                    </a>
+                    <!--a data-sly-test="${site.link}" href="${site.link}" target="${site.openInNewWindow ? '_blank' : ''}">
+                        ${site.label}
+                    </a>
+    				<sly data-sly-test="${!site.link}">${site.label}</sly-->
+                    <p data-sly-test="${site.desc}">${site.desc}</p>
+    			</li>
+            </ul>
+        </div>
+        <div class="footer__section ui accordion">
+            <h4 class="footer__section-header title">
+                ${footer.aboutTitle}
+                <i class="gore-icon gore-icon-plus"></i>
+                <i class="gore-icon gore-icon-close"></i>
+            </h4>
+            <ul class="footer__items-wrapper content" data-sly-list.link="${footer.aboutLinks}">
+             	<li class="footer__item" data-sly-test="${link.link}">
+            		<a href="${link.link}" target="${link.openInNewWindow ? '_blank' : ''}">${link.label}</a>
+    			</li>
+            </ul>
+        </div>
+        <div class="footer__section ui accordion">
+            <h4 class="footer__section-header title">
+                ${footer.legalTitle}
+                <i class="gore-icon gore-icon-plus"></i>
+                <i class="gore-icon gore-icon-close"></i>
+            </h4>
+    		<ul class="footer__items-wrapper content" data-sly-list.link="${footer.legalLinks}">
+            	<li class="footer__item" data-sly-test="${link.link}">
+            		<a href="${link.link}" target="${link.openInNewWindow ? '_blank' : ''}">${link.label}</a>
+    			</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer__copyrights">${footer.copyrights @ context='html'}</div>
+    <div class="footer__triangle"></div>
+</footer>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

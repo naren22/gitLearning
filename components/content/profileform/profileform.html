@@ -1,0 +1,243 @@
+<sly
+	data-sly-use.model="com.gore.marketing.core.models.impl.UserProfileModel"
+	data-sly-test.ready="${model.ready}"
+	data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
+<div id="register">
+
+	<div>
+		<h2>
+			${properties.formHeader || 'ALL ABOUT YOU' @ i18n}
+		</h2>
+	</div>
+	<hr class="primary">
+	<div>
+		<label>${properties.titleAndName || 'TITLE AND NAME' @ i18n}</label>
+		<div> <span>${model.profileProperties.titleAndName}  </span>
+			<a style="float:right; padding-right:60px" href="#" class="edit-link" data-form-id="nameForm">Edit</a>
+			<a href="#" style="float:right; padding-right:40px" class="cancel-link hidden" data-form-id="nameForm">Cancel</a>
+		</div>
+	</div>
+	<div>
+		<form id="nameForm" action="#" method="post" class="hidden">
+			<ul style="list-style: none;">
+	
+				<li><label for="title"> ${properties.title || 'Title' @ i18n}</label> <input
+					id="title" name="title" type="text" required
+					value="${model.profileProperties.title}" maxlength="19"> <label
+					for="firstName"> ${properties.firstName || 'First Name' @ i18n}</label> <input
+					id="firstName" name="firstName" type="text" required
+					value="${model.profileProperties.firstName}" maxlength="19">
+					<label for="lastName"> ${properties.lastName || 'Last Name' @ i18n}</label> <input
+					id="lastName" name="lastName" type="text" required
+					value="${model.profileProperties.lastName}" maxlength="19">
+				</li>
+			</ul>
+			<div>
+				<input type="submit"
+					value="${properties.saveChangesButton||'Save' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.nameFormSuccessMessage || 'Your Name is updated successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.nameFormErrorMessage || 'Error Occurred while updating your name.' @ i18n}</div>
+	</div>
+	<hr class="secondary">
+	<label> ${properties.phone || 'PHONE NUMBER' @ i18n}</label>
+	<div> <span>${model.profileProperties.phone}  </span>
+		<a style="float:right; padding-right:60px" href="#" class="edit-link" data-form-id="phoneForm">Edit</a>
+		<a href="#" style="float:right; padding-right:40px" class="cancel-link hidden" data-form-id="phoneForm">Cancel</a>
+	</div>
+	<div>
+		<form id="phoneForm" action="#" method="post" class="hidden">
+			<ul style="list-style: none;">
+				<li><label for="phone"> ${properties.phone || 'PHONE NUMBER' @ i18n}</label> <input
+					id="phone" name="phone" type="text" placeholder="${properties.phoneph || 'Phone number (optional)' @ i18n}"
+					value="${model.profileProperties.phone}"
+					maxlength="15">
+					<div></div></li>
+			</ul>
+			<div>
+				<input type="submit"
+					value="${properties.saveChangesButton||'Save' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.phoneFormSuccessMessage || 'Your Phone Number is updated successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.phoneFormErrorMessage || 'Error Occurred while updating your phone number.' @ i18n}</div>
+	</div>
+	<hr class="secondary">
+	<div>
+		<label> ${properties.organization || 'COMPANY' @ i18n}</label> 
+		<div> <span>${model.profileProperties.organization}  </span></div>
+	</div>
+	<hr class="secondary">
+	<div>
+		<label> ${properties.relationship || 'RELATIONSHIP TO GORE' @ i18n}</label> 
+	<div> <span>${model.profileProperties.relationship}  </span></div>
+	</div>
+	<hr class="secondary">
+	<label> ${properties.jobTitle || 'JOB TITLE' @ i18n}</label>
+	<div> <span>${model.profileProperties.jobTitle}  </span>
+		<a style="float:right; padding-right:60px" href="#" class="edit-link" data-form-id="jobTitleForm">Edit</a>
+		<a href="#" style="float:right; padding-right:40px" class="cancel-link hidden" data-form-id="jobTitleForm">Cancel</a>
+	</div>
+	<div>
+		<form id="jobTitleForm" action="#" method="post" class="hidden">
+			<ul style="list-style: none;">
+				<li><label for="jobTitle"> ${properties.jobTitle || 'JOB TITLE' @ i18n}</label> <input
+					id="jobTitle" name="jobTitle" type="text"
+					value="${model.profileProperties.jobTitle}" maxlength="20">
+				</li>
+			</ul>
+			<div>
+				<input type="submit"
+					value="${properties.saveChangesButton||'Save' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.jobTitleFormSuccessMessage || 'Your Job Title is updated successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.jobTitleFormErrorMessage || 'Error Occurred while updating your job title.' @ i18n}</div>
+	</div>	
+	<hr class="secondary">
+	<label>${properties.companyAddress || 'COMPANY ADDRESS' @ i18n}</label> 
+	<div> <span><label>
+			${model.profileProperties.street}</label> <label>
+			${model.profileProperties.city}</label><label>
+			${model.profileProperties.postalCode}</label> <label>
+			${model.profileProperties.country}</label>
+	      </span>
+		<a style="float:right; padding-right:60px" href="#" class="edit-link" data-form-id="addressForm">Edit</a>
+		<a href="#" style="float:right; padding-right:40px" class="cancel-link hidden" data-form-id="addressForm">Cancel</a>
+	</div>
+	<div>	
+		<form id="addressForm" action="#" method="post" class="hidden">
+			<ul style="list-style: none;">
+				<li><label for="address1"> ${properties.address1 || 'Street' @ i18n}</label> <input
+					id="address1" name="address1" type="text"
+					value="${model.profileProperties.street}" maxlength="20">
+				</li>
+				<li><label for="city"> ${properties.city || 'City' @ i18n}</label> <input
+					id="city" name="city" type="text"
+					value="${model.profileProperties.city}" maxlength="20"></li>
+				<li><label for="zip"> ${properties.zip || 'Postal Code' @ i18n}</label> <input id="zip"
+					name="zip" type="text" value="${model.profileProperties.postalCode}"
+					maxlength="20"></li>
+				<li><label for="country"> ${properties.country || 'Country' @ i18n}</label> <input
+					id="country" name="country" type="text"
+					value="${model.profileProperties.country}" maxlength="20"></li>
+			</ul>
+			<div>
+				<input type="submit"
+					value="${properties.saveChangesButton||'Save' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.addressFormSuccessMessage || 'Your Address is updated successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.addressFormErrorMessage || 'Error Occurred while updating your address.' @ i18n}</div>
+	</div>
+	<hr class="secondary">
+
+	<div>
+		<h2>
+			${properties.acccountSettings || 'ACCOUNT SETTINGS' @ i18n}
+		</h2>
+	</div>
+	<hr class="primary">
+	<label>${properties.email || 'EMAIL' @ i18n}</label>
+	<div>${properties.emailPrefix  || 'Your Email Address is' @ i18n} : <strong>${model.profileProperties.email}</strong></div>
+	<hr class="secondary">
+	<label>${properties.pwd || 'PASSWORD' @ i18n}</label> 
+	<div> 
+		<a style="float:right; padding-right:60px" href="#" class="edit-link" data-form-id="passwordForm">Edit</a>
+		<a href="#" style="float:right; padding-right:40px" class="cancel-link hidden" data-form-id="passwordForm">Cancel</a>
+	</div>
+	<div>
+		<form id="passwordForm" action="#"  class="hidden"
+			method="post">
+			<ul style="list-style: none;">
+	
+				<li>
+				<label for="password">${properties.pwdLbl || 'Current Password' @ i18n}</label> 
+				<input
+					id="password" name="pwd" type="password" value=""></li>
+				<li>
+				<label for="newPwd">${properties.newPwd || 'New Password' @ i18n}</label> <input
+					id="newPwd" name="newPwd" type="password" value=""></li>
+				<div>${properties.passwordRequirements @ context='html'}</div>
+			</ul>
+			<div>
+				<input type="submit"
+					value="${properties.saveChangesButton||'Save' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.passwordFormSuccessMessage || 'Your Password is updated successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.passwordFormErrorMessage || 'Error Occurred while updating your password.' @ i18n}</div>
+	
+		<div data-sly-test="${properties.forgotPwdTxt}">
+			${properties.forgotPwdTxt @ context='html'}
+		</div>
+	</div>
+	<hr class="secondary">
+	<label>${properties.languageTitle||'LANGUAGE' @ i18n}</label> 
+	<div> 
+		<span>
+			${properties.currLanguagePrefix||'Your language is currently set to:' @ i18n} <strong data-sly-test="${model.profileProperties.portalLanguage=='en_us'}">${'English' @ i18n}</strong>	
+			<strong data-sly-test="${model.profileProperties.portalLanguage=='de_de'}">${'German' @ i18n}</strong>	
+			<strong data-sly-test="${model.profileProperties.portalLanguage=='it_it'}">${'Italian' @ i18n}</strong>	 
+		</span>		
+		<a style="float:right; padding-right:60px" href="#" class="edit-link" data-form-id="languageForm">Edit</a>
+		<a href="#" style="float:right; padding-right:40px" class="cancel-link hidden" data-form-id="languageForm">Cancel</a>
+	</div>
+	<div>
+		<label>${properties.languageSubtext}</label>
+		<form id="languageForm" action="#" method="post" class="hidden">
+			<ul style="list-style: none;">
+				<li>
+					<label for="language">${properties.languageSelect || 'Portal Language' @ i18n}</label> 
+					<select
+						id="language">
+							<option value="en_us">${'English' @ i18n}</option>
+							<option value="de_de">${'German' @ i18n}</option>
+							<option value="it_it">${'Italian' @ i18n}</option>
+					</select>
+				</li>
+			</ul>
+			<div>
+				<input type="submit"
+					value="${properties.saveChangesButton||'Save' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.languageFormSuccessMessage || 'Your Language Preference is updated successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.languageFormErrorMessage || 'Error Occurred while updating your language preference.' @ i18n}</div>
+	</div>
+		
+	<hr class="secondary">
+	<button class="ui button secondary" type="button" id="delete-button-profile">${properties.deleteButton || 'DELETE ACCOUNT' @ i18n}</button>
+	<div id="delete-account-popup" class="hidden">
+		<div>${properties.deleteFormHeader}</div>
+		<form id="deleteForm" action="#" method="post">
+			<div>
+				<input type="hidden" name="email"
+					value="${model.profileProperties.email}"> <input
+					type="hidden" name="toEmail"
+					value="${properties.deleteRecipientEmail}"> <input
+					type="hidden" name="id" value="${model.profileProperties.uniqueId}">
+				<input type="hidden" name="language"
+					value="${model.profileProperties.portalLanguage}"> <input
+					type="radio" id="find" name="reason"
+					value="${properties.deleteFormFind}"> <label for="find">${properties.deleteFormFind}</label><br>
+				<input type="radio" id="useful" name="reason"
+					value="${properties.deleteFormUseful}"> <label for="useful">${properties.deleteFormUseful}</label><br>
+				<input type="radio" id="other" name="reason"
+					value="${properties.deleteFormOther}"> <label for="other">${properties.deleteFormOther}</label>
+	
+				<div>${properties.deleteReasonHeader}</div>
+				<label for="message"> ${properties.deleteReasonText}</label> <input
+					id="message" name="message" type="text" value="" maxlength="20">
+	
+				<input type="submit"
+					value="${properties.deleteButton||'Delete Account' @ i18n}">
+			</div>
+		</form>
+		<div class="hidden" class="success-message hidden">${properties.languageFormSuccessMessage || 'Your Delete Account request is sent successfully.' @ i18n}</div>
+		<div class="hidden" class="error-message hidden">${properties.languageFormErrorMessage || 'Error Occurred while sending your delete account request.' @ i18n}</div>
+	</div>
+</div>
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

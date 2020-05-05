@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Page"
+    sling:resourceType="cq/gui/components/authoring/dialog"
+    extraClientlibs="[cq.common.wcm,core.wcm.components.page.v1.editor,cq.wcm.msm.properties]"
+    helpPath="https://www.adobe.com/go/aem_cmp_page_v1"
+    mode="edit">
+    <content
+        granite:class="cq-dialog-content-page"
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                granite:class="cq-siteadmin-admin-properties-tabs"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                size="L">
+                <items jcr:primaryType="nt:unstructured">
+                    <asset-share-commons
+                        jcr:primaryType="nt:unstructured"
+                        sling:orderBefore="basic"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/gore-marketing/components/structure/details-page/cq:dialog/asset-share-commons"/>
+                </items>
+            </tabs>
+        </items>
+    </content>
+    <asset-share-commons
+        cq:showOnCreate="{Boolean}false"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Asset Share"
+        sling:orderBefore="basic"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <asset-details
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/include"
+                        path="/apps/gore-marketing/components/structure/details-page/cq:dialog/asset-share-commons/asset-details"/>
+                </items>
+            </column>
+        </items>
+        <asset-details
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Asset Details Configuration"
+            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+            <items jcr:primaryType="nt:unstructured">
+                <column
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                    <items jcr:primaryType="nt:unstructured">
+                        <fieldset
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Asset Details Configuration"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset">
+                            <items jcr:primaryType="nt:unstructured">
+                                <placeholder-asset-path
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldDescription="Override path to the default asset details placeholder image. Placeholder assets are only to aid in authoring."
+                                    fieldLabel="Placeholder Asset Override"
+                                    name="./config/asset-details/placeholderPath"
+                                    rootPath="/"/>
+                                <hidebacktoresults
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    fieldDescription="If checked, the back button will be hidden"
+                                    name="./config/asset-details/hideBackToResults"
+                                    rootPath="/"
+                                    text="Hide Back button?"
+                                    value="true"/>
+                                <lblbacktoresults
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="If not provided, 'Back to Results' is displayed"
+                                    name="./config/asset-details/labelBackToResults"
+                                    fieldLabel="Back to Results Label"/>
+                            </items>
+                        </fieldset>
+                    </items>
+                </column>
+            </items>
+        </asset-details>
+    </asset-share-commons>
+</jcr:root>

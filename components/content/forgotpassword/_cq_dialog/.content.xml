@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+	xmlns:cq="http://www.day.com/jcr/cq/1.0"
+	xmlns:jcr="http://www.jcp.org/jcr/1.0"
+	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+	jcr:primaryType="nt:unstructured" jcr:title="Forgot Password"
+	sling:resourceType="cq/gui/components/authoring/dialog"
+	maximized="{Boolean}true">
+	<content jcr:primaryType="nt:unstructured"
+		sling:resourceType="granite/ui/components/coral/foundation/container">
+		<items jcr:primaryType="nt:unstructured">
+			<tab-1 jcr:primaryType="nt:unstructured"
+				sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+				margin="{Boolean}true">
+				<items jcr:primaryType="nt:unstructured">
+					<column jcr:primaryType="nt:unstructured"
+						sling:resourceType="granite/ui/components/coral/foundation/container">
+						<items jcr:primaryType="nt:unstructured">
+							<success jcr:primaryType="nt:unstructured"
+								jcr:title="Forgot Password"
+								sling:resourceType="granite/ui/components/foundation/section">
+								<layout jcr:primaryType="nt:unstructured"
+									sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+									margin="{Boolean}false" />
+								<items jcr:primaryType="nt:unstructured">
+									<column jcr:primaryType="nt:unstructured"
+										sling:resourceType="granite/ui/components/foundation/container">
+										<items jcr:primaryType="nt:unstructured">
+											<messageTitle jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/foundation/form/textfield"
+												emptyText="Password Recovery" fieldLabel="Title"
+												name="./PasswordRecoveryTitle" />
+											<Text jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+												emptyText="Enter the email you’re using for your account."
+												fieldLabel="Message" name="./message"
+												required="{Boolean}true" />
+											<continue-button
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+												emptyText="Continue" fieldLabel="Continue Button Label"
+												name="./btnLabel" required="{Boolean}true" />
+											<emailAddressPh
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/foundation/form/textfield"
+												fieldLabel="Placeholder for Email Address"
+												emptyText="Email Address" name="./emailAddressPh"
+												required="true" />
+											<emailSubject
+												jcr:primaryType="nt:unstructured"
+												sling:resourceType="granite/ui/components/foundation/form/textfield"
+												fieldLabel="Email Subject"
+												emptyText="Reset your password - Gore Marketing Portal" name="./emailSubject"/>
+										</items>
+									</column>
+								</items>
+							</success>
+						</items>
+					</column>
+				</items>
+			</tab-1>
+		</items>
+	</content>
+</jcr:root>

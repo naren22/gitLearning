@@ -1,0 +1,22 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	 data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"
+     data-sly-use.customConfig="gore.core.assetshare.configuration.impl.CustomConfigImpl"
+     data-sly-test.asset="${modelCache['com.adobe.aem.commons.assetshare.content.AssetModel']}"
+     data-sly-use.title="com.adobe.aem.commons.assetshare.components.details.Title"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.ready="${title.ready}">
+
+    <div class="btn-back-wrapper">
+        <a data-sly-test="${!customConfig.hideBackToResults}"
+            class="btn-back" 
+            href="${title.returnPath @ extension = 'html'}#${asset.url @ context = 'uri'}"
+            data-asset-share-id="return-link"
+            data-asset-share-asset="${asset.path}">
+            <i class="gore-icon gore-arrow-left"></i>
+            ${customConfig.labelBackToResults || 'Back to Results' @ i18n}
+        </a>
+    </div>
+
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!ready}"></sly>

@@ -1,0 +1,40 @@
+<sly data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+     data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"></sly>
+
+<sly data-sly-test="${wcmmode.edit}">
+    <h4>Cookie Banner Component configuration ...</h4>
+</sly>
+<script data-sly-test="${properties.message && properties.buttonText}">
+    window.addEventListener("load", function(){
+        window.wpcc.init({
+            "colors":{
+                "popup":{
+                    "background":"#f9f9f9",
+                    "text":"#000000"},
+                "button":{"background":"#ff0000",
+                "text":"#ffffff"}
+            },
+            "margin":"none",
+            "position":"bottom",
+            "content":{
+                "message":"${properties.message @ context='scriptString'}",
+                "link":" ",
+                "button":"${properties.buttonText @ context='scriptString'}"}
+            })
+        });
+</script>
+
+<div>
+    <div>
+            <p class="">${properties['image']}</p>
+            <p class="">${properties['Title']}</p>
+            <p class="">${properties['Description']}</p>
+    </div>
+    <div>
+
+        <p class="">${properties['AcceptButton']}</p>
+        <p class="">${properties['preferences']}</p>
+        <p class="">${properties['privacyNotice']}</p>
+        <p class="">${properties['cookienotice']}</p>
+    </div>
+</div>

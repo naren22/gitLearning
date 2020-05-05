@@ -1,0 +1,53 @@
+
+.teaser {
+
+    .cmp-image {
+
+        img {
+            clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 57%);
+
+            /* Safari */
+            -webkit-clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 57%);
+        }
+    }
+
+    .cmp-teaser {
+
+        &__content {
+            text-align: center;
+            padding: 0 16px;
+        }
+
+        &__title {
+            font-size: 30px;
+            line-height: 1.6;
+            letter-spacing: 3px;
+        }
+
+        &__description {
+            font-family: MetaOT-Norm;
+            color: #666666;
+            letter-spacing: 0.96px;
+			max-height: 60px;
+            p {
+                line-height: 1.88;
+            }
+        }
+
+        &__action-container {
+            border: 1px solid;
+            width: 100%;
+            margin: 4rem 0;
+            padding: 16px 0;
+        }
+
+        &__action-link {
+            line-height: 1.25;
+            letter-spacing: 4px;
+        }
+
+        &__title, &__action-link {
+            color: #383335;
+        }
+    }
+}

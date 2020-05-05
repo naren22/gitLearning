@@ -1,0 +1,89 @@
+<sly
+	data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	data-sly-use.contact="com.gore.marketing.core.models.ContactUs"
+	data-sly-test.config="${modelCache['com.adobe.aem.commons.assetshare.configuration.Config']}"></sly>
+
+<input type="hidden" name="wcmmode" value="${(wcmmode.disabled || wcmmode.preview)}">
+<input type="hidden" name="loggedin" value="${contact.loggedInUser}">
+<div class="contactus contactus-form ui form no-border">
+	<form method="post" action="#" id="contactus-form-gm">
+		<h1 class="form-title">${properties['formTitle'] || 'CONTACT US' @ i18n}</h1>
+		<h3 class="form-subtitle" data-sly-test="${properties['foreword']}">
+			${properties['foreword'] @ context='html'}
+		</h3>
+
+		<!--/* UNLOGGED USER */-->
+		<sly data-sly-test="${!((wcmmode.disabled || wcmmode.preview) && contact.loggedInUser)}">
+			<div class="form-group">
+				<label>${properties['lblTitle'] || 'Title' @ i18n}</label>
+				<div id="cf_title_drop" class="ui dropdown gore-dropdown">
+					<div class="text">${properties['dfltTitle'] || 'Select a title' @ i18n}</div>
+					<div class="menu transition hidden">
+						<div class="item active selected" data-value="">${properties['dfltTitle'] || 'Select a title' @ i18n}</div>
+						<sly data-sly-list="${properties['title']}">
+							<div class="item" data-value="${item}">${item}</div>
+						</sly>
+					</div>
+					<input type="hidden" name="title" id="cf_title" value="">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="hidden">${properties['phFirstName'] || 'First Name' @ i18n}</label>
+				<input type="text" placeholder="${properties['phFirstName'] || 'First Name' @ i18n}"
+					   name="firstname" id="cf_firstname" required></input>
+			</div>
+	
+			<div class="form-group">
+				<label class="hidden">${properties['phLastName'] || 'Last Name' @ i18n}</label>
+				<input type="text" placeholder="${properties['phLastName'] || 'Last Name' @ i18n}"
+					   name="lastname" id="cf_lastname" required></input>
+			</div>
+	
+			<div class="form-group">
+				<label class="hidden">${properties['phEmailAddress'] || 'Email Address' @ i18n}</label>
+				<input type="email" maxlength="100" placeholder="${properties['phEmailAddress'] || 'Email Address' @ i18n}"
+					   name="emailaddress" id="cf_emailaddress" required></input>
+			</div>
+		</sly>
+
+		<!--/* LOGGED USER */-->
+		<sly data-sly-test="${(wcmmode.disabled || wcmmode.preview) && contact.loggedInUser}"> 
+			<input type="hidden" name="title" id="cf_title" 
+				   value="${contact.userProfile ? contact.userProfile['title'] : ''}">
+			<input type="hidden" name="firstName" id="cf_firstname" 
+				   value="${contact.userProfile ? contact.userProfile['givenName'] : ''}">
+			<input type="hidden" name="lastName" id="cf_lastname"
+				   value="${contact.userProfile ? contact.userProfile['familyName'] : ''}">
+			<input type="hidden" name="emailAddress" id="cf_emailaddress"
+				   value="${contact.userProfile ? contact.userProfile['email'] : ''}">
+		</sly>
+
+		<input type="hidden" value="${properties['toEmail']}" name="toEmail" id="cf_toEmail">
+
+		<div class="form-group">
+			<label class="hidden">${properties['phSubject'] || 'Subject' @ i18n}</label>
+			<input type="text" id="cf_subject" placeholder="${properties['phSubject'] || 'Subject' @ i18n}"
+				   name="subject" required></input>
+		</div>
+
+		<div class="form-group last">
+			<label class="hidden">${properties['phMessage'] || 'Write your message' @ i18n}</label>
+			<textarea class="autoresize" id="cf_message" 
+					  placeholder="${properties['phMessage'] || 'Write your message' @ i18n}" 
+					  required></textarea>
+		</div>
+		<div class="form-copy" data-sly-test="${properties['disclaimer']}">
+			${properties['disclaimer'] @ context = 'html'}
+		</div>
+
+		<button data-asset-share-id="submit-share" type="submit" id="contactus-form-gm-submit" class="ui primary button">
+				${properties['lblSubmit'] || 'Submit' @ i18n}
+		</button>
+	</form>
+	<div class="form-message thank-you-success ${(wcmmode.disabled || wcmmode.preview) ? 'hidden' : ''}"
+		 data-sly-resource="${'success' @ resourceType='wcm/foundation/components/responsivegrid'}"></div>
+	<div class="form-message thank-you-error ${(wcmmode.disabled || wcmmode.preview) ? 'hidden' : ''}"
+		 data-sly-resource="${'error' @ resourceType='wcm/foundation/components/responsivegrid'}"></div>
+</div>
+

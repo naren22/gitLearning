@@ -1,0 +1,37 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+	 data-sly-use.modelCache="com.adobe.aem.commons.assetshare.util.ModelCache"
+	 data-sly-test.asset="${modelCache['com.adobe.aem.commons.assetshare.content.AssetModel']}"
+	 data-sly-use.helper="gore.core.assetshare.components.gmc.Languages"
+	 data-sly-test.ready="${helper.ready}">
+
+<div class="dropdown-wrapper">
+	<div class="toggle-wrapper ${helper.relatedAssets ? '':'no-toggle'}">
+		<div class="asset-languages-selected">${helper.language}</div>
+		<div class="asset-languages-title" data-sly-test="${helper.relatedAssets}">${properties.languageSelectMessage || 'Select Asset Language:' @ i18n}</div>
+	</div>
+	<div data-sly-test.multi="${helper.relatedAssets}" class="details-languages">
+		<div class="ui basic segment">
+			<fieldset id="relatedAssetsSelect" >
+				<label class="language-check custom-checkbox">
+					${helper.language}
+					<input type="checkbox" name="initial" checked="checked" disabled="disabled">
+					<span class="checkmark"></span>
+				</label>
+				<sly data-sly-list.relatedAsset="${helper.relatedAssets}">
+					<label class="language-check custom-checkbox">
+						${relatedAsset.language}
+						<input type="checkbox" name="related" id="${relatedAsset.path}" value="${relatedAsset.path}" data-lang="${relatedAsset.language}">
+						<span class="checkmark"></span>
+					</label>
+				</sly>
+			</fieldset>
+		</div>
+	</div>
+</div>
+<div data-sly-test.multi="${multi}" class="details-language-footer cmp-text">
+	<p>${properties.multiLanguageSelectFooter}</p>
+</div>
+<div data-sly-test="${!multi}" class="details-language-footer cmp-text">
+	<p>${properties.singleLanguageSelectFooter}</p>
+</div>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=true}"></sly>

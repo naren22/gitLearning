@@ -1,0 +1,153 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" 
+	 data-sly-call="${clientlib.all @ categories='gore.marketing.registrationform'}" />
+
+<div id="register" class="item">
+	<p data-sly-test="${wcmmode.edit && !properties.accountlabel}" data-emptytext="[User Registration : Please configure User Registration component]" class="cq-placeholder"></p>
+    <div style="margin: 20px 0 -10px 0; color: red;display:none;">${'registerForgotForm_errorEmailAlreadyUsed' @i18n}</div>
+    <!--/* /login/register */-->
+    <form id="registerForm" class="manual_entry ng-pristine ng-valid" action="/bin/gore/userRegistration.html" method="post">
+    	<div class="form-section">
+	        <h2 class="form-section-header">${properties.personalinfolabel || 'Personal Information' @ i18n}</h2>
+	        <div class="form-group" data-sly-test="${resource.path}/titles">
+				<label>${properties.titlelabel}</label>
+				<div id="title_drop" class="ui dropdown gore-dropdown" data-sly-use.titlesNode="${resource.path}/titles">
+					<div class="text">${properties['dfltTitle'] || 'Select a title' @ i18n}</div>
+					<div class="menu transition hidden">
+						<sly data-sly-list="${titlesNode.listChildren}">
+							<div class="item" data-value="${item.value}">${item.displayName}</div>
+						</sly>
+					</div>
+					<input type="hidden" name="title" id="title" value="" required>
+				</div>
+			</div>
+
+	        <div class="form-group">
+	            <label class="hidden" for="register-firstName">${properties.firstnamelabel ||'First Name' @ i18n}</label>
+	            <input id="register-firstName" name="firstName" class="text" type="text" value="" maxlength="19"
+	            placeholder="${properties.firstnamelabel || 'First Name' @ i18n }" required>
+	        </div>
+	        <div class="form-group">
+	            <label class="hidden" for="register-lastName">${properties.lastnamelabel || 'Last Name' @ i18n}</label>
+	            <input id="register-lastName" name="lastName" class="text" type="text" value="" maxlength="20" 
+	            placeholder="${properties.lastnamelabel || 'Last Name' @ i18n}" required>
+	        </div>
+	        <div class="form-group">
+	            <label class="hidden" for="phonenumber">${properties.phonenumberlabel || 'Phone number (optional)' @ i18n}</label>
+	            <input id="phonenumber" name="phoneNumber" class="text" type="number" value=""
+	            placeholder="${properties.phonenumberlabel || 'Phone number (optional)' @ i18n}" required>
+	            <div class="input-info">${properties.phonenumberhint || 'Please add the country code with 00 in front and use only numbers ' @ i18n}</div>
+	        </div>
+	    </div>
+	    <div class="form-section">
+	        <h2 class="form-section-header">${properties.companyheadinglabel || 'Company Information' @ i18n}</h2>
+	        <div class="form-group">
+	            <label class="hidden" for="company">${properties.companylabel || 'Company' @ i18n}</label>
+	            <input id="company" name="company" class="text" type="text" value="" maxlength="40"
+	            placeholder="${properties.companylabel || 'Company' @ i18n}" required>
+	        </div>
+	        <div class="form-group">
+	            <label class="hidden" for="jobtitle">${properties.jobtitlelabel || 'Job Title' @ i18n}</label>
+	            <input id="register-jobtitle" name="jobTitle" class="text" type="text" value="" maxlength="40" 
+	            placeholder="${properties.jobtitlelabel || 'Job Title' @ i18n}" required>
+	        </div>
+	        <div class="form-group">
+	            <label class="hidden" for="street">${properties.streetlabel || 'Street' @ i18n}</label>
+	            <input id="street" name="street" class="text" type="text" value="" maxlength="20"
+	            placeholder="${properties.streetlabel || 'Street' @ i18n}" required>
+	        </div>
+	        <div class="form-row">
+		        <div class="form-group">
+		            <label class="hidden" for="postalcode">${properties.postalcodelabel ||'Postal Code' @ i18n}</label>
+		            <input id="postalcode" name="postalCode" class="number" type="number" value="" 
+		            placeholder="${properties.postalcodelabel ||'Postal Code' @ i18n}" required>
+		        </div>
+		        <div class="form-group">
+		            <label class="hidden" for="city">${properties.citylabel || 'City' @ i18n}</label>
+		            <input id="city" name="city" class="text" type="text" value="" maxlength="20" 
+		            placeholder="${properties.citylabel || 'City' @ i18n}" required>
+		        </div>
+	    	</div>
+	        <div class="form-group" data-sly-test="${resource.path}/countries">
+				<label for="country">${properties.countrylabel || 'Country' @ i18n}</label>
+				<div id="country_drop" class="ui dropdown gore-dropdown" data-sly-use.countriesNode="${resource.path}/countries">
+					<div class="text">${countriesNode.listChildren[0].displayName}</div>
+					<div class="menu transition hidden">
+						<sly data-sly-list="${countriesNode.listChildren}">
+							<div class="item ${item.count == 0? 'selected':''}" data-value="${item.value}">${item.displayName}</div>
+						</sly>
+					</div>
+					<input type="hidden" name="country" id="country" value="${countriesNode.listChildren[0].value}" required>
+				</div>
+			</div>
+    	</div>
+    	<div class="form-section">
+			<h2 class="form-section-header">${properties.accountlabel || 'Account Details' @ i18n}</h2>
+	         <div class="form-group" data-sly-test="${resource.path}/accounttypes">
+				<label for="accounttype">${properties.accounttypelabel || 'Your Role' @ i18n}</label>
+				<div id="account-type_drop" class="ui dropdown gore-dropdown" 
+					 data-sly-use.accounttypesNode="${resource.path}/accounttypes">
+					<div class="text">${accounttypesNode.listChildren[0].displayName}</div>
+					<div class="menu transition hidden">
+						<sly data-sly-list="${accounttypesNode.listChildren}">
+							<div class="item" data-value="${item.value}">${item.displayName}</div>
+						</sly>
+					</div>
+					<input type="hidden" name="accounttype" id="account-type" 
+						   value="${accounttypesNode.listChildren[0].value}" required>
+				</div>
+			</div>
+	        <div class="form-group">
+	            <label class="hidden" for="register-email">${properties.emaillabel || 'Email Address' @ i18n}</label>
+	            <input id="register-email" name="email" class="text" type="text" value="" maxlength="40" 
+	            placeholder="${properties.emaillabel || 'Email Address' @ i18n}" required>
+	        </div>
+	        <div class="form-group">
+	            <label class="hidden" for="password">${properties.passwordlabel || 'Password' @ i18n}</label>
+	            <input id="password" name="password" class="text password strength" type="password" value=""
+	            	   placeholder="${properties.passwordlabel || 'Password' @ i18n}" required>
+	           	<div class="toggle-password">
+	           		<i class="gore-icon gore-icon-eye"></i>
+	           		<i class="gore-icon gore-icon-eyecross"></i>
+	           	</div>
+	            <div class="input-info">${properties.passwordhint @ context='html'}</div>
+	        </div>
+	        <div class="form-group" data-sly-test="${resource.path}/portallanguages">
+				<label for="portallanguage">${properties.portallanguagelabel || 'Portal Language' @ i18n}</label>
+				<div id="portallanguage_drop" class="ui dropdown gore-dropdown" 
+					 data-sly-use.portallanguagesNode="${resource.path}/portallanguages">
+					<div class="text">${portallanguagesNode.listChildren[0].displayName}</div>
+					<div class="menu transition hidden">
+						<sly data-sly-list="${portallanguagesNode.listChildren}">
+							<div class="item" data-value="${item.value}">${item.displayName}</div>
+						</sly>
+					</div>
+					<input type="hidden" name="portallanguage" id="portallanguage" value="${portallanguagesNode.listChildren[0].value}">
+				</div>
+			</div>
+	        <div class="form-group mt-6">
+            	<label class="custom-checkbox" for="register-firsttermlabel">
+					${properties.firstTerm @ context = 'html'}
+					<input type="checkbox" name="register-firsttermlabel" id="register-firsttermlabel" value="false">
+					<span class="checkmark"></span>
+				</label>
+	        </div>
+	        <div class="form-group">
+	            <label class="custom-checkbox" for="register-secondtermlabel">
+					${properties.secondterm @ context = 'html'}
+					<input type="checkbox" name="register-secondtermlabel" id="register-secondtermlabel" value="false">
+					<span class="checkmark"></span>
+				</label>
+	        </div>
+    	</div>
+        <input type="hidden" name="thankyoupageurl" value="${properties.thankyouurl}.html" />
+        <input type="hidden" name="terms-accepted-datetime" id="terms-accepted-datetime" value="" />
+        <input type="hidden" name="consent-accepted-datetime" id="consent-accepted-datetime" value="" />
+        <input type="hidden" name="registrationSource" id="registrationsource" value="GORE-TEX ONE:MP" />
+        <input type="hidden" name="accountClassification" id="accountclassification" value="Regular Account" />
+        <input type="hidden" name="loginPageURL" id="loginpageurl" value="${properties.loginpageurl}.html" />
+
+        <div class="form-actions">
+            <button type="submit" class="ui primary button">${properties.submitbutton || 'Register' @ i18n}</button>
+        </div>
+    </form>
+</div>

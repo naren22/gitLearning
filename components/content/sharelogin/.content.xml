@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    cq:icon="share"
+    jcr:primaryType="cq:Component"
+    jcr:title="Share Login"
+    sling:resourceSuperType="asset-share-commons/actions/share"
+    componentGroup="Gore Marketing Portal"
+    jcr:description="Form to get password for the shared asset in order to view it."/>

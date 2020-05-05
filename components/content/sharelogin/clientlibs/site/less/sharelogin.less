@@ -1,0 +1,83 @@
+.cmp-share-login {
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.sharelogin-wrapper {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    .sharelogin-bkg-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 1;
+        background-color: #E7E7E7;
+        @media only screen and (max-width: 767px) {
+            background-size: auto;
+            background-position: top center;
+        }
+    }
+
+    .sharelogin-info-box {
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        width: 400px;
+        height: auto;
+        z-index: 2;
+        background-color: #F6F6F6;
+        @media only screen and (max-width: 991px) {
+            left: 25%;
+        }
+        @media only screen and (max-width: 767px) {
+            left: 5%;
+            width: 90%;
+        }
+    }
+
+    .sharelogin-header {
+        background-color: #FFFFFF;
+        padding: 1.5rem;
+
+        h2 {
+            font-weight: 500;
+            margin: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.72px;
+        }
+    }
+
+    .sharelogin-subheader {
+        margin-bottom: 1.5rem;
+
+        h2 {
+            text-align: center;
+            letter-spacing: 2.4px;
+        }
+    }
+
+    .propmt-msg {
+        font-family: 'MetaOT';
+        line-height: 1.63;
+        letter-spacing: 0.16px;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .sharelogin-body {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+}

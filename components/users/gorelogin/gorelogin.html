@@ -1,0 +1,27 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='gore.marketing.loginform'}"/>
+<div class="">
+				
+				<form class="">
+					<div class="">
+						<label>${properties.emailaddress || 'Email Address' @i18n}</label>
+						<input type="email" name="userid" id="login-userid" class="" required>
+
+                        <label>${properties.passwordlabel || 'Password' @ i18n}</label>
+						<input type="password" name="password" id="login-password" class="" required>
+
+
+	            	</div>
+	            	<div class="" id="loginErrorMessage" class="hidden">
+                           <p>${properties.loginerrormessage || 'Invalid Email Address or Password?' @ i18n}</p>
+                    </div>
+
+                    <div class="">
+                           ${properties.forgotpassword @ context='html'}
+                    </div>
+                    <input type="hidden" id="url" value="${currentPage.path}.html/j_security_check" />
+                      <input type="hidden" id="login-homepageurl" value="${properties.landingpageurl}.html" />
+					<button type="submit" class="" id="login-button">${properties.buttonLabel || 'Login' @ i18n}</button>
+				</form>
+			</sly>
+</div>
